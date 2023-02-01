@@ -5,12 +5,15 @@
 services:
   cvat_db:
     container_name: cvat_db
-    image: postgres:15-alpine
+    image: postgres:latest
     restart: always
     environment:
       POSTGRES_USER: root
       POSTGRES_DB: cvat
       POSTGRES_HOST_AUTH_METHOD: trust
+      PGDATA: /tmp
+    ports:
+      - "5432:5432:
     volumes:
       - cvat_db:/var/lib/postgresql/data
     networks:
